@@ -75,7 +75,7 @@ Step 3 -- Open the Bravo USD File:
 Open isaac sim and click File -> Open at the toolbar at the top of the window, 
 then navigate to 
 
-/your isaac sim folder/bravo_7_setup_for_isaac_sim/reach_bravo_7/usd_files
+/(your isaac sim folder)/bravo_7_setup_for_isaac_sim/reach_bravo_7/usd_files
 and select bravo_working_gripper.usd
 
 NOTE: In order to get isaac sim to play nice with the bravo's mimic joints, I 
