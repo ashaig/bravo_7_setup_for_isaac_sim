@@ -1,0 +1,172 @@
+
+
+Setup Instructions for the Bravo Arm in Isaac Sim 4.5
+
+
+================================================================================
+
+
+Helpful Links:
+
+Isaac Sim Docs, Examples, and Tutorials: 
+	https://docs.isaacsim.omniverse.nvidia.com/4.5.0/index.html
+
+Isaac Sim Extension API: 
+	https://docs.isaacsim.omniverse.nvidia.com/4.5.0/py/index.html
+
+Isaac Sim Python API: 
+	https://docs.isaacsim.omniverse.nvidia.com/4.5.0/py/source/extensions/isaacsim.core.api/docs/api.html#python-api
+
+To Make Custom Scripting Extensions: 
+	https://docs.isaacsim.omniverse.nvidia.com/4.5.0/utilities/extension_template_generator.html
+	https://docs.isaacsim.omniverse.nvidia.com/4.5.0/utilities/extension_templates_tutorial.html
+
+
+================================================================================
+
+
+Step 1 -- Install Isaac Sim:
+
+System Requirements: 
+	https://docs.isaacsim.omniverse.nvidia.com/4.5.0/installation/requirements.html
+
+Download the appropriate version of Isaac Sim 4.5 for your system from this 
+page: 
+	https://docs.isaacsim.omniverse.nvidia.com/4.5.0/installation/download.html
+
+For a local installation, follow the instructions on this page after downloading 
+the appropriate version: 
+	https://docs.isaacsim.omniverse.nvidia.com/4.5.0/installation/install_workstation.html
+
+NOTE: there are also instructions for either cloud-based or container 
+installations (I haven't followed them though so I don't know anything about it 
+other than that it exists): 
+	https://docs.isaacsim.omniverse.nvidia.com/4.5.0/installation/install_container.html
+	https://docs.isaacsim.omniverse.nvidia.com/4.5.0/installation/install_cloud.html
+
+
+================================================================================
+
+
+Step 2 -- Download the Necessary Files: 
+
+Open a terminal and navigate to your isaac sim folder, then clone the bravo arm 
+github repository: 
+	git clone https://github.com/ashaig/bravo_7_setup_for_isaac_sim.git
+
+
+================================================================================
+
+
+Step 3 -- Open the Bravo USD File:
+
+3 a)
+Open isaac sim and click File -> Open at the toolbar at the top of the window, 
+then navigate to 
+/<your isaac sim folder>/bravo_7_setup_for_isaac_sim/reach_bravo_7/usd_files
+and select bravo_working_gripper.usd
+
+NOTE: In order to get isaac sim to play nice with the bravo's mimic joints, I 
+had to modify some of the properties of the following joints: bravo_axis_a, 
+bravo_lower_gripper_joint, and bravo_upper_gripper_joint. If you want to use the 
+bravo arm with the original mimic joint configuration created from the 
+bravo.urdf file, instead open the 'bravo_orig_mimic_config.usd' file. 
+
+
+================================================================================
+
+
+Step 4 -- Demonstrate Bravo Arm Inverse Kinematics (Optional)
+
+a) 
+Open isaac sim; in the toolbar at the top of the window, go to Tools -> 
+Robotics -> Lula Test Widget. Press the Play button (default location is on the 
+left side of the isaac sim window). 
+
+b)
+Under Selection Panel in the widget, click the dropdown menu for Select 
+Articulation and click /bravo_manipulation/root_joint. In the robot Description 
+YAML field, select 
+/<your isaac sim folder>/bravo_7_setup_for_isaac_sim/reach_bravo_7/lrdf_and_rmpflow_config_files/bravo_LRDF_w_ee.yaml
+In the Robot URDF field, select 
+/<your isaac sim folder>/bravo_7_setup_for_isaac_sim/reach_bravo_7/urdf_and_xrdf_files/bravo.urdf
+
+c)
+Click LOAD, then click the Select End Effector Frame dropdown menu and select 
+bravo_a_link. Go to the Lula Kinematics Solver panel and click FOLLOW TARGET to 
+generate a red cube for the arm to follow using the Lula algorithm for inverse 
+kinematics; you can select the cube by clicking on it directly, or by selecting 
+World -> Target in the Stage tree tab. 
+
+d)
+Make sure the scene is playing and that you've clicked the LOAD button in the 
+Selection Panel, then open the RmpFlow panel, go to the RmpFlow Config YAML 
+field, and enter 
+/<your isaac sim folder>/bravo_7_setup_for_isaac_sim/reach_bravo_7/lrdf_and_rmpflow_config_files/bravo_rmpflow_config.yaml
+Then click FOLLOW TARGET to demo the arm following a target while avoiding 
+obstacles using the RMPFlow algorithm. 
+
+
+================================================================================
+
+
+Step 5 -- Open and Run a Simple Bravo Arm Scripting Extension (Optional)
+NOTE: some of these steps are janky workarounds; sorry about that :/
+
+a)
+Move the bravo_arm_scripting_extension folder (found in 
+/<your isaac sim folder>/bravo_7_setup_for_isaac_sim/) to 
+/<your isaac sim folder>/extsUser
+
+b)
+Navigate to 
+/<your isaac sim folder>/exts/isaacsim.robot_motion.motion_generation/motion_policy_configs
+and open the policy_map.json file, then add the following entry:
+	"Bravo":{
+		"RMPflow": "./Reach/bravo/rmpflow/config.json"
+	}
+
+c)
+While still in the motion_policy_configs directory, create a new folder called 
+'Reach'; inside this folder, create another new folder called 'bravo', and copy 
+your bravo.urdf file (found at: 
+/<your isaac sim folder>/bravo_7_setup_for_isaac_sim/reach_bravo_7/urdf_and_xrdf_files/bravo.urdf
+) into this folder. 
+
+d) 
+While still in the motion_policy_configs/Reach/bravo directory, create a folder 
+called 'rmpflow', and enter it. Copy/paste the following files into this folder: 
+config.json, found at:  
+/<your isaac sim folder>/bravo_7_setup_for_isaac_sim/reach_bravo_7/
+bravo_LRDF_w_ee.yaml, found at: 
+/<your isaac sim folder>/bravo_7_setup_for_isaac_sim/reach_bravo_7/lrdf_and_rmpflow_config_files
+bravo_rmpflow_config.yaml, found at: 
+/<your isaac sim folder>/bravo_7_setup_for_isaac_sim/reach_bravo_7/lrdf_and_rmpflow_config_files
+
+e) 
+Navigate to 
+/<your isaac sim folder>/extsUser/bravo_arm_scripting_extension/bravo_arm_scripting_extension_python
+and open the scenario.py file
+
+f) 
+(this step is embarassingly janky; at some point I'm gonna look up how to do  
+basic directory finding stuff in python and fix this)
+Go to line 57 and change the 'path_to_robot_usd' variable to 
+/<your isaac sim folder>/bravo_7_setup_for_isaac_sim/reach_bravo_7/usd_files/bravo_working_gripper.usd
+
+g)
+Open isaac sim and and click: Windows -> Extensions in the main toolbar at the 
+top of the window. 
+
+h)
+In the Extensions tab that just opened, clear the search bar and type 'bravo'; 
+click on the extension titled 'BRAVO_ARM_SCRIPTING_EXTENSION', then click on the 
+DISABLED/ENABLED toggle switch to enable the extension.
+
+i)
+In the main toolbar at the top of the isaac sim window, click 
+bravo_arm_scripting_extension -> bravo_arm_scripting_extension. In the new tab 
+that opens, click the 'LOAD' button under World Controls; when the scene is done 
+loading, expand the Run Scenario tab (directly below World Controls) and click 
+'RUN' to run a rudimentory script that has the bravo arm pick up a block and 
+move it while avoiding obstacles in the environment using the RMPFlow algorithm. 
