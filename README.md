@@ -63,6 +63,7 @@ Step 3 -- Open the Bravo USD File:
 3 a)
 Open isaac sim and click File -> Open at the toolbar at the top of the window, 
 then navigate to 
+
 /<your isaac sim folder>/bravo_7_setup_for_isaac_sim/reach_bravo_7/usd_files
 and select bravo_working_gripper.usd
 
