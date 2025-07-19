@@ -9,17 +9,22 @@ Setup Instructions for the Bravo Arm in Isaac Sim 4.5
 Helpful Links:
 
 Isaac Sim Docs, Examples, and Tutorials: 
-	https://docs.isaacsim.omniverse.nvidia.com/4.5.0/index.html
+
+https://docs.isaacsim.omniverse.nvidia.com/4.5.0/index.html
 
 Isaac Sim Extension API: 
-	https://docs.isaacsim.omniverse.nvidia.com/4.5.0/py/index.html
+
+https://docs.isaacsim.omniverse.nvidia.com/4.5.0/py/index.html
 
 Isaac Sim Python API: 
-	https://docs.isaacsim.omniverse.nvidia.com/4.5.0/py/source/extensions/isaacsim.core.api/docs/api.html#python-api
+
+https://docs.isaacsim.omniverse.nvidia.com/4.5.0/py/source/extensions/isaacsim.core.api/docs/api.html#python-api
 
 To Make Custom Scripting Extensions: 
-	https://docs.isaacsim.omniverse.nvidia.com/4.5.0/utilities/extension_template_generator.html
-	https://docs.isaacsim.omniverse.nvidia.com/4.5.0/utilities/extension_templates_tutorial.html
+
+https://docs.isaacsim.omniverse.nvidia.com/4.5.0/utilities/extension_template_generator.html
+
+https://docs.isaacsim.omniverse.nvidia.com/4.5.0/utilities/extension_templates_tutorial.html
 
 
 ================================================================================
@@ -28,21 +33,26 @@ To Make Custom Scripting Extensions:
 Step 1 -- Install Isaac Sim:
 
 System Requirements: 
-	https://docs.isaacsim.omniverse.nvidia.com/4.5.0/installation/requirements.html
+
+https://docs.isaacsim.omniverse.nvidia.com/4.5.0/installation/requirements.html
 
 Download the appropriate version of Isaac Sim 4.5 for your system from this 
 page: 
-	https://docs.isaacsim.omniverse.nvidia.com/4.5.0/installation/download.html
+
+https://docs.isaacsim.omniverse.nvidia.com/4.5.0/installation/download.html
 
 For a local installation, follow the instructions on this page after downloading 
 the appropriate version: 
-	https://docs.isaacsim.omniverse.nvidia.com/4.5.0/installation/install_workstation.html
+
+https://docs.isaacsim.omniverse.nvidia.com/4.5.0/installation/install_workstation.html
 
 NOTE: there are also instructions for either cloud-based or container 
 installations (I haven't followed them though so I don't know anything about it 
 other than that it exists): 
-	https://docs.isaacsim.omniverse.nvidia.com/4.5.0/installation/install_container.html
-	https://docs.isaacsim.omniverse.nvidia.com/4.5.0/installation/install_cloud.html
+
+https://docs.isaacsim.omniverse.nvidia.com/4.5.0/installation/install_container.html
+
+https://docs.isaacsim.omniverse.nvidia.com/4.5.0/installation/install_cloud.html
 
 
 ================================================================================
@@ -52,7 +62,8 @@ Step 2 -- Download the Necessary Files:
 
 Open a terminal and navigate to your isaac sim folder, then clone the bravo arm 
 github repository: 
-	git clone https://github.com/ashaig/bravo_7_setup_for_isaac_sim.git
+
+git clone https://github.com/ashaig/bravo_7_setup_for_isaac_sim.git
 
 
 ================================================================================
