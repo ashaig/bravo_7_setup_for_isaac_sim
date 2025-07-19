@@ -64,7 +64,7 @@ Step 3 -- Open the Bravo USD File:
 Open isaac sim and click File -> Open at the toolbar at the top of the window, 
 then navigate to 
 
-/<your isaac sim folder>/bravo_7_setup_for_isaac_sim/reach_bravo_7/usd_files
+<your isaac sim folder>/bravo_7_setup_for_isaac_sim/reach_bravo_7/usd_files
 and select bravo_working_gripper.usd
 
 NOTE: In order to get isaac sim to play nice with the bravo's mimic joints, I 
@@ -88,9 +88,12 @@ b)
 Under Selection Panel in the widget, click the dropdown menu for Select 
 Articulation and click /bravo_manipulation/root_joint. In the robot Description 
 YAML field, select 
-/<your isaac sim folder>/bravo_7_setup_for_isaac_sim/reach_bravo_7/lrdf_and_rmpflow_config_files/bravo_LRDF_w_ee.yaml
+
+<your isaac sim folder>/bravo_7_setup_for_isaac_sim/reach_bravo_7/lrdf_and_rmpflow_config_files/bravo_LRDF_w_ee.yaml
+
 In the Robot URDF field, select 
-/<your isaac sim folder>/bravo_7_setup_for_isaac_sim/reach_bravo_7/urdf_and_xrdf_files/bravo.urdf
+
+<your isaac sim folder>/bravo_7_setup_for_isaac_sim/reach_bravo_7/urdf_and_xrdf_files/bravo.urdf
 
 c)
 Click LOAD, then click the Select End Effector Frame dropdown menu and select 
@@ -103,7 +106,9 @@ d)
 Make sure the scene is playing and that you've clicked the LOAD button in the 
 Selection Panel, then open the RmpFlow panel, go to the RmpFlow Config YAML 
 field, and enter 
-/<your isaac sim folder>/bravo_7_setup_for_isaac_sim/reach_bravo_7/lrdf_and_rmpflow_config_files/bravo_rmpflow_config.yaml
+
+<your isaac sim folder>/bravo_7_setup_for_isaac_sim/reach_bravo_7/lrdf_and_rmpflow_config_files/bravo_rmpflow_config.yaml
+
 Then click FOLLOW TARGET to demo the arm following a target while avoiding 
 obstacles using the RMPFlow algorithm. 
 
@@ -116,12 +121,18 @@ NOTE: some of these steps are janky workarounds; sorry about that :/
 
 a)
 Move the bravo_arm_scripting_extension folder (found in 
-/<your isaac sim folder>/bravo_7_setup_for_isaac_sim/) to 
-/<your isaac sim folder>/extsUser
+
+<your isaac sim folder>/bravo_7_setup_for_isaac_sim/) 
+
+to 
+
+<your isaac sim folder>/extsUser
 
 b)
 Navigate to 
-/<your isaac sim folder>/exts/isaacsim.robot_motion.motion_generation/motion_policy_configs
+
+<your isaac sim folder>/exts/isaacsim.robot_motion.motion_generation/motion_policy_configs
+
 and open the policy_map.json file, then add the following entry:
 	"Bravo":{
 		"RMPflow": "./Reach/bravo/rmpflow/config.json"
@@ -131,29 +142,39 @@ c)
 While still in the motion_policy_configs directory, create a new folder called 
 'Reach'; inside this folder, create another new folder called 'bravo', and copy 
 your bravo.urdf file (found at: 
-/<your isaac sim folder>/bravo_7_setup_for_isaac_sim/reach_bravo_7/urdf_and_xrdf_files/bravo.urdf
+
+<your isaac sim folder>/bravo_7_setup_for_isaac_sim/reach_bravo_7/urdf_and_xrdf_files/bravo.urdf
+
 ) into this folder. 
 
 d) 
 While still in the motion_policy_configs/Reach/bravo directory, create a folder 
 called 'rmpflow', and enter it. Copy/paste the following files into this folder: 
 config.json, found at:  
-/<your isaac sim folder>/bravo_7_setup_for_isaac_sim/reach_bravo_7/
+
+<your isaac sim folder>/bravo_7_setup_for_isaac_sim/reach_bravo_7/
+
 bravo_LRDF_w_ee.yaml, found at: 
-/<your isaac sim folder>/bravo_7_setup_for_isaac_sim/reach_bravo_7/lrdf_and_rmpflow_config_files
+
+<your isaac sim folder>/bravo_7_setup_for_isaac_sim/reach_bravo_7/lrdf_and_rmpflow_config_files
+
 bravo_rmpflow_config.yaml, found at: 
-/<your isaac sim folder>/bravo_7_setup_for_isaac_sim/reach_bravo_7/lrdf_and_rmpflow_config_files
+
+<your isaac sim folder>/bravo_7_setup_for_isaac_sim/reach_bravo_7/lrdf_and_rmpflow_config_files
 
 e) 
 Navigate to 
-/<your isaac sim folder>/extsUser/bravo_arm_scripting_extension/bravo_arm_scripting_extension_python
+
+<your isaac sim folder>/extsUser/bravo_arm_scripting_extension/bravo_arm_scripting_extension_python
+
 and open the scenario.py file
 
 f) 
 (this step is embarassingly janky; at some point I'm gonna look up how to do  
 basic directory finding stuff in python and fix this)
 Go to line 57 and change the 'path_to_robot_usd' variable to 
-/<your isaac sim folder>/bravo_7_setup_for_isaac_sim/reach_bravo_7/usd_files/bravo_working_gripper.usd
+
+<your isaac sim folder>/bravo_7_setup_for_isaac_sim/reach_bravo_7/usd_files/bravo_working_gripper.usd
 
 g)
 Open isaac sim and and click: Windows -> Extensions in the main toolbar at the 
