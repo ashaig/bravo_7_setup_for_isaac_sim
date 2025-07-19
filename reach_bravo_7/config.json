@@ -1,0 +1,10 @@
+{
+    "end_effector_frame_name": "bravo_a_link",
+    "maximum_substep_size" : 0.00334,
+    "ignore_robot_state_updates" : false,
+    "relative_asset_paths": {
+        "robot_description_path" : "bravo_LRDF_w_ee.yaml",
+        "urdf_path": "../bravo.urdf",
+        "rmpflow_config_path" : "bravo_rmpflow_config.yaml"
+    }
+}
